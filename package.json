@@ -1,24 +1,46 @@
 {
-  "name": "typescript-sdk",
+  "name": "arifpay-ts-sdk",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/arifpay.js",
+   "types": "lib/arifpay.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build" : "tsc"
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Arifpay-net/typescript-sdk.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "arifpay",
+    "payment",
+    "processing",
+    "credit",
+    "cards",
+    "api",
+    "ethiopia"
+  ],
+  "author": "Arifpay <dev@arifpay.org>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Arifpay-net/typescript-sdk/issues"
   },
   "homepage": "https://github.com/Arifpay-net/typescript-sdk#readme",
   "devDependencies": {
+    "prettier": "^2.6.2",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.7.2"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
