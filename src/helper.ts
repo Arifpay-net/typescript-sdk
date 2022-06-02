@@ -1,3 +1,3 @@
-export function getExpireDateFromDate(date: Date){
-    return date.toISOString();
+export function getExpireDateFromDate(date: Date) {
+  return date.toISOString();
 }

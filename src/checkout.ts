@@ -20,7 +20,8 @@ class Checkout {
       return arifAPIResponse.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
-        if (error.response?.status === 401) throw new ArifpayUnAuthorizedException('Invalid authentication credentials');
+        if (error.response?.status === 401)
+          throw new ArifpayUnAuthorizedException('Invalid authentication credentials');
         throw new ArifpayException((error.response?.data as ArifpayAPIResponse<any>).msg as string);
       }
       throw error;
@@ -36,7 +37,8 @@ class Checkout {
       return arifAPIResponse.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
-        if (error.response?.status === 401) throw new ArifpayUnAuthorizedException('Invalid authentication credentials');
+        if (error.response?.status === 401)
+          throw new ArifpayUnAuthorizedException('Invalid authentication credentials');
         throw new ArifpayException((error.response?.data as ArifpayAPIResponse<any>).msg as string);
       }
       throw error;
@@ -57,8 +59,8 @@ export interface ArifpayCheckoutSession extends ArifpayCheckoutRequest {
 export interface ArifpayTranscation {
   id: number;
   transactionId: string;
-  transactionStatus: string;   // TODO: change to enum
-  paymentType: string;  // TODO change to enum
+  transactionStatus: string; // TODO: change to enum
+  paymentType: string; // TODO change to enum
   updatedAt: string;
   createdAt: string;
 }
