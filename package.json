@@ -1,19 +1,19 @@
 {
-  "name": "arifpay-ts-sdk",
+  "name": "arifpay",
   "version": "1.0.0",
-  "description": "",
+  "description": "Arifpay Typscript Checkout wrapper.",
   "main": "lib/arifpay.js",
-   "types": "lib/arifpay.d.ts",
+  "types": "lib/arifpay.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "npm run format && git add -A src",
-    "postversion" : "git push && git push --tags"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -35,12 +35,18 @@
   },
   "homepage": "https://github.com/Arifpay-net/typescript-sdk#readme",
   "devDependencies": {
+    "@types/jest": "^28.1.0",
+    "jest": "^28.1.0",
     "prettier": "^2.6.2",
+    "ts-jest": "^28.0.3",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.7.2"
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }
