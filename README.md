@@ -17,9 +17,9 @@ Node 8, 10 or higher.
 Install the package with:
 
 ```sh
-npm install arifpay-ts-sdk --save
+npm install arifpay --save
 # or
-yarn add arifpay-ts-sdk
+yarn add arifpay
 
 ```
 
@@ -31,14 +31,14 @@ value:
 
 <!-- prettier-ignore -->
 ```js
-const arifpay = require('arifpay-ts-sdk')('API KEY...');
+const arifpay = require('arifpay')('API KEY...');
 
 ```
 
 Or using ES modules and `async`/`await`:
 
 ```js
-import Arifpay from 'arifpay-ts-sdk';
+import Arifpay from 'arifpay';
 const arifpay = new Arifpay('API KEY...');
 
 ```
@@ -48,7 +48,7 @@ const arifpay = new Arifpay('API KEY...');
 Import Arifpay as a default import.
 
 ```ts
-import Arifpay from 'arifpay-ts-sdk';
+import Arifpay from 'arifpay';
 const arifpay = new Arifpay('API KEY...');
 
 ```
