@@ -1,6 +1,8 @@
 import axios, { AxiosInstance } from 'axios';
+import ArifpayBadRequestException from './exceptions/APIBadRequestException';
 import ArifpayUnAuthorizedException from './exceptions/APIUnauthorized';
 import ArifpayException from './exceptions/arifpayexception';
+import ArifpayNetworkException from './exceptions/arifpaynetworkexception';
 import ArifpayAPIResponse from './interface/arifpayapiresponse';
 
 class Checkout {
@@ -11,7 +13,7 @@ class Checkout {
 
   async create(
     arifpayCheckoutRequest: ArifpayCheckoutRequest,
-    option: ArifpayCheckoutOption = { sandbox: false },
+    option: ArifpayOptions = { sandbox: false },
   ): Promise<ArifpayCheckoutResponse> {
     try {
       const basePath: string = option.sandbox ? '/sandbox/' : '/';
@@ -19,16 +21,12 @@ class Checkout {
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayCheckoutResponse>;
       return arifAPIResponse.data;
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        if (error.response?.status === 401)
-          throw new ArifpayUnAuthorizedException('Invalid authentication credentials');
-        throw new ArifpayException((error.response?.data as ArifpayAPIResponse<any>).msg as string);
-      }
+      this.__handleException(error);
       throw error;
     }
   }
 
-  async fetch(sessionID: string, option: ArifpayCheckoutOption = { sandbox: false }): Promise<ArifpayCheckoutSession> {
+  async fetch(sessionID: string, option: ArifpayOptions = { sandbox: false }): Promise<ArifpayCheckoutSession> {
     try {
       const basePath: string = option.sandbox ? '/sandbox/' : '/';
       const response = await this._httpClient.get(`${basePath}checkout/session/${sessionID}`);
@@ -36,12 +34,20 @@ class Checkout {
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayCheckoutSession>;
       return arifAPIResponse.data;
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
+      this.__handleException(error);
+      throw error;
+    }
+  }
+
+  __handleException(error: any) {
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
         if (error.response?.status === 401)
           throw new ArifpayUnAuthorizedException('Invalid authentication credentials');
+        if (error.response?.status === 400)
+          throw new ArifpayBadRequestException((error.response?.data as ArifpayAPIResponse<any>).msg as string);
         throw new ArifpayException((error.response?.data as ArifpayAPIResponse<any>).msg as string);
-      }
-      throw error;
+      } else throw new ArifpayNetworkException(error.message);
     }
   }
 }
@@ -90,7 +96,7 @@ export interface ArifpayCheckoutItem {
   description?: string;
   image?: string;
 }
-export interface ArifpayCheckoutOption {
+export interface ArifpayOptions {
   sandbox: boolean;
 }
 

@@ -89,6 +89,11 @@ After importing the `arifpay` package, use the checkout property of the Arifpay 
         },
       ],
     };
+```
+After putting your building  `ArifpayCheckoutRequest` just call the `create` method. Note passing `sandbox: true` option will create the session in test environment.
+
+```js
+
     let session = await arifpay.checkout.create(data, { sandbox: true});
     console.log(session)
 ```
