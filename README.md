@@ -81,7 +81,7 @@ After importing the `arifpay` package, use the checkout property of the Arifpay 
       successUrl: 'https://gateway.arifpay.net',
       items: [
         {
-          name: 'Bannana',
+          name: 'Banana',
           price: 10.0,
           quantity: 1,
           image: "image url",
@@ -89,7 +89,7 @@ After importing the `arifpay` package, use the checkout property of the Arifpay 
         },
       ],
     };
-    let session = await arifpay.checkout.create(data, true);
+    let session = await arifpay.checkout.create(data, { sandbox: true});
     console.log(session)
 ```
 This is session response object contains the following fields
@@ -110,7 +110,7 @@ To track the progress of a checkout session you can use the fetch method as show
 ```js
  const arifpay = new Arifpay('API KEY...');
 // A sessionId will be returned when creating a session.
- const session = await arifpay.checkout.fetch('checkOutSessionID', true);
+ const session = await arifpay.checkout.fetch('checkOutSessionID', { sandbox: true});
 ```
 
 The following object represents a session

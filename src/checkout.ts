@@ -11,10 +11,10 @@ class Checkout {
 
   async create(
     arifpayCheckoutRequest: ArifpayCheckoutRequest,
-    test: boolean = false,
+    option: ArifpayCheckoutOption = { sandbox: false },
   ): Promise<ArifpayCheckoutResponse> {
     try {
-      const basePath: string = test ? '/sandbox/' : '/';
+      const basePath: string = option.sandbox ? '/sandbox/' : '/';
       const response = await this._httpClient.post(`${basePath}checkout/session`, arifpayCheckoutRequest);
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayCheckoutResponse>;
       return arifAPIResponse.data;
@@ -28,9 +28,9 @@ class Checkout {
     }
   }
 
-  async fetch(sessionID: string, test: boolean = false): Promise<ArifpayCheckoutSession> {
+  async fetch(sessionID: string, option: ArifpayCheckoutOption = { sandbox: false }): Promise<ArifpayCheckoutSession> {
     try {
-      const basePath: string = test ? '/sandbox/' : '/';
+      const basePath: string = option.sandbox ? '/sandbox/' : '/';
       const response = await this._httpClient.get(`${basePath}checkout/session/${sessionID}`);
 
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayCheckoutSession>;
@@ -89,6 +89,9 @@ export interface ArifpayCheckoutItem {
   price: number;
   description?: string;
   image?: string;
+}
+export interface ArifpayCheckoutOption {
+  sandbox: boolean;
 }
 
 export interface ArifpayBeneficary {
