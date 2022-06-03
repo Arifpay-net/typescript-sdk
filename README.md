@@ -141,8 +141,20 @@ The following object represents a session
 }
 ```
 
+# Change Log
+
+Released Date: `v1.0.1` June 03, 2022
+
+- Initial Release
+
+Released Date: `v1.0.2` June 03, 2022
+
+- added  `ArifpayOptions` to `checkout.create` and `checkout.fetch`
+
+
 ## More Information
 
 - [REST API Version](https://developer.arifpay.net/docs/checkout/overview)
 - [Mobile SDK](https://developer.arifpay.net/docs/clientSDK/overview)
+- [Change Log](https://developer.arifpay.net/docs/nodejs/changelog)
 

@@ -4,7 +4,7 @@ import Checkout from './checkout';
 class ArifPay {
   DEFAULT_HOST: string = 'https://gateway.arifpay.net';
   API_VERSION: string = '/v0';
-  PACKAGE_VERSION: string = '1.0.0';
+  PACKAGE_VERSION: string = '1.0.3';
   DEFAULT_TIMEOUT: number = 1000 * 60 * 2;
 
   _httpClient: AxiosInstance;
