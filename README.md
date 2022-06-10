@@ -6,7 +6,7 @@ applications written in server-side JavaScript.
 
 ## Documentation
 
-See the [`Developer` API docs](https://developer.arifpay.net/).
+See the [`Developer` API docs](https://developer.arifpay.net/). For Laravel SDK [visit here](https://packagist.org/packages/arifpay/arifpay). 
 
 ## Requirements
 
@@ -156,5 +156,6 @@ Released Date: `v1.0.2` June 03, 2022
 
 - [REST API Version](https://developer.arifpay.net/docs/checkout/overview)
 - [Mobile SDK](https://developer.arifpay.net/docs/clientSDK/overview)
-- [Change Log](https://developer.arifpay.net/docs/nodejs/changelog)
-
+- [Node JS](https://developer.arifpay.net/docs/nodejs/overview)
+- [Laravel](https://developer.arifpay.net/docs/laravel/overview)
+- [Change Log](https://developer.arifpay.net/docs/laravel/changelog)
