@@ -62,4 +62,43 @@ describe('Arifpay Checkout', () => {
       expect(err).toBeInstanceOf(ArifpayBadRequestException);
     }
   });
+  test("Check Vaildation Error Detail is Added", async () => {
+    try {
+      const arifpay = new Arifpay('HrUDdrOv3TV92cgpzpbQ3DakLJtHfYfh');
+    const d = new Date();
+    d.setMonth(10);
+    const expired = getExpireDateFromDate(d);
+    const data: ArifpayCheckoutRequest = {
+      beneficiaries: [
+        {
+          accountNumber: '01320811436100',
+          bank: 'AWINETAA',
+          amount: 10.0,
+        },
+      ],
+      cancelUrl: 'https://api.arifpay.com',
+      errorUrl: 'h//api.arifpay.com',
+      notifyUrl: 'https://gateway.arifpay.net/test/callback',
+      expireDate: expired,
+      nonce: Math.floor(Math.random() * 10000).toString(),
+      paymentMethods: [],
+      successUrl: 'https://gateway.arifpay.net',
+      items: [
+        {
+          name: 'Bannana',
+          price: 10.0,
+          quantity: 1,
+        },
+      ],
+    };
+    let session = await arifpay.checkout.create(data, { sandbox: true });
+     
+    } catch (err) {
+      if(err instanceof ArifpayBadRequestException)
+        console.log(err.error);
+      expect(err).toBeInstanceOf(ArifpayBadRequestException);
+      expect(err).toHaveProperty('msg');
+      expect(err).toHaveProperty('error');
+    }
+  });
 });

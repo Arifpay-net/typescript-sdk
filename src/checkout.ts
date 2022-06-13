@@ -44,9 +44,11 @@ class Checkout {
       if (error.response) {
         if (error.response?.status === 401)
           throw new ArifpayUnAuthorizedException('Invalid authentication credentials');
-        if (error.response?.status === 400)
-          throw new ArifpayBadRequestException((error.response?.data as ArifpayAPIResponse<any>).msg as string);
-        throw new ArifpayException((error.response?.data as ArifpayAPIResponse<any>).msg as string);
+        if (error.response?.status === 400){
+          let arifAPIResponse = error.response?.data as ArifpayAPIResponse<any>;
+          throw new ArifpayBadRequestException(arifAPIResponse.msg as string,arifAPIResponse.data);
+        }
+          throw new ArifpayException((error.response?.data as ArifpayAPIResponse<any>).msg as string);
       } else throw new ArifpayNetworkException(error.message);
     }
   }
