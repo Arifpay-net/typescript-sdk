@@ -41,6 +41,11 @@ Or using ES modules and `async`/`await`:
 import Arifpay from 'arifpay';
 const arifpay = new Arifpay('API KEY...');
 
+//for common js
+
+const Arifpay =  require('arifpay').default;
+const arifpay  = new Arifpay('API KEY...');
+
 ```
 
 ### Usage with TypeScript
