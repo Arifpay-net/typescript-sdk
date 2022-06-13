@@ -2,7 +2,7 @@ import ArifpayException from './arifpayexception';
 
 class ArifpayBadRequestException extends ArifpayException {
   msg: string;
-  error: any
+  error: any;
   constructor(msg: string, error: any) {
     super(msg);
     this.msg = msg;
