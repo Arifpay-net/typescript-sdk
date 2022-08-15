@@ -150,14 +150,14 @@ The following object represents a session
 learn more about [DirectPay here](https://developer.arifpay.net/docs/direcPay/overview)
 ### DirectPay for telebirr
 ```js 
-     $session = arifpay.checkout.create($data, new ArifpayOptions(true));
+     session = arifpay.checkout.create($data, new ArifpayOptions(true));
 
     return arifpay.directPay.telebirr.pay(session.sessionId);
 ```
 
-### DirectPay for awash wallet
-```js 
-     session = arifpay.checkout.create($data, new ArifpayOptions(true));
+[comment]: <> ### DirectPay for awash wallet
+[comment]: <> ```js 
+<!--     session = arifpay.checkout.create($data, new ArifpayOptions(true));
 
     return arifpay.directPay.awashWallet.transfer(session.sessionId, phoneNumber);
 
@@ -175,6 +175,7 @@ learn more about [DirectPay here](https://developer.arifpay.net/docs/direcPay/ov
     //Verify OTP
     arifpay.directPay.awash.verify(session.sessionId, otp)
 ```
+-->
 # Change Log
 
 Released Date: `v1.0.1` June 03, 2022
