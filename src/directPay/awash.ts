@@ -16,7 +16,7 @@ class Awash {
     debitAccount: string
   ): Promise<ArifpayTransferResponse> {
     try {
-      const response = await this._httpClient.post(`/checkout/awash/wallet/direct/transfer`, {sessionId: checkoutSessionID, phoneNumber: phoneNumber, debitAccount: debitAccount});
+      const response = await this._httpClient.post(`/checkout/awash/wallet/direct/transfer`, {sessionId: checkoutSessionID, phoneNumber, debitAccount});
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayTransferResponse>;
       return arifAPIResponse.data;
     } catch (error) {
