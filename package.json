@@ -1,6 +1,6 @@
 {
   "name": "arifpay",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Arifpay Typscript Checkout wrapper.",
   "main": "lib/arifpay.js",
   "types": "lib/arifpay.d.ts",

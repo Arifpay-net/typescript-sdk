@@ -12,7 +12,7 @@ class ArifPay {
   checkout: Checkout;
   directPay: DirectPay;
   apiKey: string;
-  
+
   constructor(apikey: string) {
     this.apiKey = apikey;
 

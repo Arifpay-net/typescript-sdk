@@ -9,34 +9,34 @@ class AwashWallet {
     this._httpClient = _httpClient;
   }
 
-  async transfer(
-    checkoutSessionID: string,
-    phoneNumber: string
-  ): Promise<ArifpayTransferResponse> {
+  async transfer(checkoutSessionID: string, phoneNumber: string): Promise<ArifpayTransferResponse> {
     try {
-      const response = await this._httpClient.post(`/checkout/awash/wallet/direct/transfer`, {sessionId: checkoutSessionID, phoneNumber});
+      const response = await this._httpClient.post(`/checkout/awash/wallet/direct/transfer`, {
+        sessionId: checkoutSessionID,
+        phoneNumber,
+      });
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayTransferResponse>;
       return arifAPIResponse.data;
     } catch (error) {
       __handleException(error);
       throw error;
     }
-  } 
+  }
 
-  async verify(
-    checkoutSessionID: string,
-    otp: string,
-    fail: boolean = false
-  ): Promise<ArifpayTransferResponse> {
+  async verify(checkoutSessionID: string, otp: string, fail: boolean = false): Promise<ArifpayTransferResponse> {
     try {
-      const response = await this._httpClient.post(`/checkout/awash/wallet/direct/verifyOTP`, {sessionId: checkoutSessionID, otp, paymentRunMode: fail ? "FAIL" : "SUCCESS",});
+      const response = await this._httpClient.post(`/checkout/awash/wallet/direct/verifyOTP`, {
+        sessionId: checkoutSessionID,
+        otp,
+        paymentRunMode: fail ? 'FAIL' : 'SUCCESS',
+      });
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayTransferResponse>;
       return arifAPIResponse.data;
     } catch (error) {
       __handleException(error);
       throw error;
     }
-  } 
+  }
 }
 
 export default AwashWallet;

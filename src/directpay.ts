@@ -13,7 +13,6 @@ class DirectPay {
     this.telebirr = new Telebirr(this._httpClient);
     this.awash = new Awash(this._httpClient);
     this.awashWallet = new AwashWallet(this._httpClient);
-
   }
 }
 

@@ -81,7 +81,7 @@ describe('Arifpay Checkout', () => {
         notifyUrl: 'https://gateway.arifpay.net/test/callback',
         expireDate: expired,
         nonce: Math.floor(Math.random() * 10000).toString(),
-        paymentMethods: ["AWASH"],
+        paymentMethods: ['AWASH'],
         successUrl: 'https://gateway.arifpay.net',
         items: [
           {
