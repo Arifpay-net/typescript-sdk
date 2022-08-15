@@ -154,10 +154,9 @@ learn more about [DirectPay here](https://developer.arifpay.net/docs/direcPay/ov
 
     return arifpay.directPay.telebirr.pay(session.sessionId);
 ```
-
-[comment]: <> ### DirectPay for awash wallet
-[comment]: <> ```js 
-<!--     session = arifpay.checkout.create($data, new ArifpayOptions(true));
+<!--
+```js 
+     session = arifpay.checkout.create($data, new ArifpayOptions(true));
 
     return arifpay.directPay.awashWallet.transfer(session.sessionId, phoneNumber);
 
