@@ -30,7 +30,7 @@ class Awash {
     fail: boolean = false
   ): Promise<ArifpayTransferResponse> {
     try {
-      const response = await this._httpClient.post(`/checkout/awash/wallet/direct/verifyOTP`, {sessionId: checkoutSessionID, otp: otp, paymentRunMode: fail ? "FAIL" : "SUCCESS",});
+      const response = await this._httpClient.post(`/checkout/awash/wallet/direct/verifyOTP`, {sessionId: checkoutSessionID, otp, paymentRunMode: fail ? "FAIL" : "SUCCESS",});
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayTransferResponse>;
       return arifAPIResponse.data;
     } catch (error) {
