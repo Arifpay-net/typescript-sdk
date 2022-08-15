@@ -145,7 +145,36 @@ The following object represents a session
   beneficiaries: ArifpayBeneficary[];
 }
 ```
+## DirectPay
 
+learn more about [DirectPay here](https://developer.arifpay.net/docs/direcPay/overview)
+### DirectPay for telebirr
+```js 
+     $session = arifpay.checkout.create($data, new ArifpayOptions(true));
+
+    return arifpay.directPay.telebirr.pay(session.sessionId);
+```
+
+### DirectPay for awash wallet
+```js 
+     session = arifpay.checkout.create($data, new ArifpayOptions(true));
+
+    return arifpay.directPay.awashWallet.transfer(session.sessionId, phoneNumber);
+
+    //Verify OTP
+    arifpay.directPay.awashWallet.verify(session.sessionId, otp)
+
+```
+
+### DirectPay for awash
+```js 
+    session = arifpay.checkout.create($data, new ArifpayOptions(true));
+
+    return arifpay.directPay.awash.transfer(session.sessionId, phoneNumber, debitAccount);
+
+    //Verify OTP
+    arifpay.directPay.awash.verify(session.sessionId, otp)
+```
 # Change Log
 
 Released Date: `v1.0.1` June 03, 2022
@@ -156,6 +185,9 @@ Released Date: `v1.0.2` June 03, 2022
 
 - added  `ArifpayOptions` to `checkout.create` and `checkout.fetch`
 
+Released Date: `v2.0.0` Aug 15, 2022
+
+- `DirectPay` added for Telebirr and Awash payment options
 
 ## More Information
 
