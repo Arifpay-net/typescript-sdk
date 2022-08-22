@@ -38,7 +38,7 @@ class Checkout {
       throw error;
     }
   }
-  
+
   async cancel(sessionID: string, option: ArifpayOptions = { sandbox: false }): Promise<ArifpayCheckoutSession> {
     try {
       const basePath: string = option.sandbox ? '/sandbox/' : '/';
