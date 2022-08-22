@@ -42,7 +42,7 @@ class Checkout {
   async cancel(sessionID: string, option: ArifpayOptions = { sandbox: false }): Promise<ArifpayCheckoutSession> {
     try {
       const basePath: string = option.sandbox ? '/sandbox/' : '/';
-      const response = await this._httpClient.get(`${basePath}checkout/session/cancel/${sessionID}`);
+      const response = await this._httpClient.post(`${basePath}checkout/session/cancel/${sessionID}`);
 
       const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayCheckoutSession>;
       return arifAPIResponse.data;
