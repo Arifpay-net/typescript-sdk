@@ -53,11 +53,11 @@ describe('Arifpay Checkout', () => {
     const session = await arifpay.checkout.fetch('11bb7352-b228-4c75-9f0d-8a035aeac08b', { sandbox: true });
     expect(session).toHaveProperty('uuid', '11bb7352-b228-4c75-9f0d-8a035aeac08b');
   });
-  
+
   test('Check cancelling Session', async () => {
     const arifpay = new Arifpay('jZeS3zV7aebkMfuPYjgeXTpWUW4J7sMd');
     const session = await arifpay.checkout.cancel('11bb7352-b228-4c75-9f0d-8a035aeac08b', { sandbox: true });
-    expect(session.transaction.transactionStatus).toEqual("CANCELLED");
+    expect(session.transaction.transactionStatus).toEqual('CANCELLED');
   });
 
   test("Check Production doesn't work with Test key", async () => {
