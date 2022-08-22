@@ -145,6 +145,23 @@ The following object represents a session
   beneficiaries: ArifpayBeneficary[];
 }
 ```
+
+## Cancel Session by Session ID
+
+If the merchant want to cancel a checkout session. it's now possible as shown below.
+
+```php
+ $arifpay = new Arifpay('API KEY...');
+// A sessionId will be returned when creating a session.
+ $session = $arifpay->checkout->cancel('checkOutSessionID', new ArifpayOptions(true));
+```
+
+The `ArifpayCheckoutSession` class is returned.
+
+- [`Laravel`](/docs/laravel/checkoutsession#Cancel-Session-by-Session-ID) SDK
+- [`NodeJS`](/docs/nodejs/checkoutsession#Cancel-Session-by-Session-ID) SDK
+
+
 ## DirectPay
 
 learn more about [DirectPay here](https://developer.arifpay.net/docs/direcPay/overview)
@@ -195,4 +212,4 @@ Released Date: `v2.0.0` Aug 15, 2022
 - [Mobile SDK](https://developer.arifpay.net/docs/clientSDK/overview)
 - [Node JS](https://developer.arifpay.net/docs/nodejs/overview)
 - [Laravel](https://developer.arifpay.net/docs/laravel/overview)
-- [Change Log](https://developer.arifpay.net/docs/laravel/changelog)
+- [Change Log](https://developer.arifpay.net/docs/nodejs/changelog)

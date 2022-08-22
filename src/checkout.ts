@@ -38,6 +38,19 @@ class Checkout {
       throw error;
     }
   }
+  
+  async cancel(sessionID: string, option: ArifpayOptions = { sandbox: false }): Promise<ArifpayCheckoutSession> {
+    try {
+      const basePath: string = option.sandbox ? '/sandbox/' : '/';
+      const response = await this._httpClient.get(`${basePath}checkout/session/cancel/${sessionID}`);
+
+      const arifAPIResponse = response.data as ArifpayAPIResponse<ArifpayCheckoutSession>;
+      return arifAPIResponse.data;
+    } catch (error) {
+      this.__handleException(error);
+      throw error;
+    }
+  }
 
   __handleException(error: any) {
     if (axios.isAxiosError(error)) {
